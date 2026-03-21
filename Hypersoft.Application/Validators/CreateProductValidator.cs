@@ -11,5 +11,6 @@ public class CreateProductValidator : AbstractValidator<CreateProductCommand>
         RuleFor(x => x.descricao).NotEmpty().MaximumLength(500);
         RuleFor(x => x.preco).GreaterThan(0);
         RuleFor(x => x.quantidade_estoque).GreaterThanOrEqualTo(0);
+        RuleFor(x => x.categoria_id).NotEmpty();
     }
 }

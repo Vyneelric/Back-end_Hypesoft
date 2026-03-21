@@ -11,4 +11,5 @@ public class ProductDto
     public string descricao { get; set; } = string.Empty;
     public decimal preco { get; set; }
     public int quantidade_estoque { get; set; }
+    public CategoryDto? category { get; set; }
 }

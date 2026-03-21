@@ -7,4 +7,6 @@ public class Product
     public string descricao { get; set; } = string.Empty;
     public decimal preco { get; set; }
     public int quantidade_estoque { get; set; }
+    public string categoria_id { get; set; } = string.Empty;
+
 }
