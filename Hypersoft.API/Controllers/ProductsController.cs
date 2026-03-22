@@ -139,4 +139,15 @@ public class ProductsController : ControllerBase
         });
     }
 
+    [HttpGet("total_value_stock")]
+    public async Task<IActionResult> GetTotalStockValue()
+    {
+        var totalValue = await _mediator.Send(new GetTotalValueStockQuery());
+        return Ok(new
+        {
+            success = true,
+            status_code = 200,
+            total_stock_value = totalValue
+        });
+    }
 }
