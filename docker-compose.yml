@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: hypersoft-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: HypersoftDB
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - hypersoft-network
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: hypersoft-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+      ME_CONFIG_BASICAUTH: false
+    depends_on:
+      - mongodb
+    networks:
+      - hypersoft-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: hypersoft-keycloak
+    ports:
+      - "8080:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: start-dev
+    networks:
+      - hypersoft-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hypersoft-api
+    ports:
+      - "5000:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__MongoDB: mongodb://mongodb:27017
+      MongoDB__Database: HypersoftDB
+    depends_on:
+      - mongodb
+      - keycloak
+    networks:
+      - hypersoft-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  hypersoft-network:
+    driver: bridge

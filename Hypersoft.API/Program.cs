@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // MongoDB
 var mongoConnection = builder.Configuration.GetConnectionString("MongoDB") ?? "mongodb://localhost:27017";
@@ -28,6 +29,9 @@ builder.Services.AddValidatorsFromAssemblyContaining<Hypersoft.Application.Valid
 builder.Services.AddAutoMapper(typeof(Hypersoft.Application.Mappings.MappingProfile));
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();

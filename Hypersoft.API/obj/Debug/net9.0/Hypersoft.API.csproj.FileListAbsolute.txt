@@ -119,3 +119,6 @@ C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\obj\Debug\net9.0\Hypersoft.AP
 C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\obj\Debug\net9.0\ref\Hypersoft.API.dll
 C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\AutoMapper.dll
 C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
