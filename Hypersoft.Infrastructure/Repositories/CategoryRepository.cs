@@ -24,4 +24,14 @@ public class CategoryRepository : ICategoryRepository
     {
         return await _context.Categories.Find(c => c.id == id).FirstOrDefaultAsync();
     }
+    public async Task<IEnumerable<Category>> GetAllAsync()
+    {
+        return await _context.Categories.Find(_ => true).ToListAsync();
+    }
+
+    public async Task<bool> DeleteAsync(string id)
+    {
+        var result = await _context.Categories.DeleteOneAsync(c => c.id == id);
+        return result.DeletedCount > 0;
+    }
 }

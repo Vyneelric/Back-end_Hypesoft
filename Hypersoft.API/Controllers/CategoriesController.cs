@@ -45,4 +45,33 @@ public class CategoriesController : ControllerBase
         data = category
     });
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var category = await _mediator.Send(new GetAllCategoryQuery());
+        return Ok(new{
+            success = true,
+            status_code = 200,
+            data = category
+        });
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var result = await _mediator.Send(new DeleteCategoryCommand(id));
+        if (!result){
+            return NotFound(new{
+                success = false,
+                status_code = 404,
+                message = $"Categoria de ID: '{id}' não foi encontrado/não existe"
+            });
+        }
+        return Ok(new{
+            success = true,
+            status_code = 204,
+            message = $"Categoria de ID: '{id}' deletado com sucesso"
+        });
+    }
 }
