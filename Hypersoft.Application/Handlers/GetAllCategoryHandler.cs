@@ -1,3 +1,4 @@
+using AutoMapper;
 using Hypersoft.Application.Queries;
 using Hypersoft.Domain.Repositories;
 using MediatR;
@@ -7,29 +8,17 @@ namespace Hypersoft.Application.Handlers;
 public class GetAllCategoryHandler : IRequestHandler<GetAllCategoryQuery, IEnumerable<CategoryDto>>
 {
     private readonly ICategoryRepository _categoryRepository;
+    private readonly IMapper _mapper;
 
-    public GetAllCategoryHandler(ICategoryRepository categoryRepository)
+    public GetAllCategoryHandler(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
+        _mapper = mapper;
     }
 
     public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
     {
-        var category = await _categoryRepository.GetAllAsync();
-        
-        var categoryDtos = new List<CategoryDto>();
-
-        foreach (var categoryI in category)
-        {
-
-            categoryDtos.Add(new CategoryDto
-            {
-                id = categoryI.id,
-                nome = categoryI.nome,
-                 descricao = categoryI.descricao
-            });
-        }
-
-        return categoryDtos;
+        var categories = await _categoryRepository.GetAllAsync();
+        return _mapper.Map<IEnumerable<CategoryDto>>(categories);
     }
 }

@@ -1,3 +1,4 @@
+using AutoMapper;
 using Hypersoft.Application.Queries;
 using Hypersoft.Domain.Repositories;
 using MediatR;
@@ -7,10 +8,12 @@ namespace Hypersoft.Application.Handlers;
 public class GetCategoryByIdHandler : IRequestHandler<GetCategoryByIdQuery, CategoryDto?>
 {
     private readonly ICategoryRepository _repository;
+    private readonly IMapper _mapper;
 
-    public GetCategoryByIdHandler(ICategoryRepository repository)
+    public GetCategoryByIdHandler(ICategoryRepository repository, IMapper mapper)
     {
         _repository = repository;
+        _mapper = mapper;
     }
 
     public async Task<CategoryDto?> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
@@ -20,11 +23,6 @@ public class GetCategoryByIdHandler : IRequestHandler<GetCategoryByIdQuery, Cate
         if (category == null) 
             return null;
 
-        return new CategoryDto
-        {
-            id = category.id,
-            nome = category.nome,
-            descricao = category.descricao
-        };
+        return _mapper.Map<CategoryDto>(category);
     }
 }

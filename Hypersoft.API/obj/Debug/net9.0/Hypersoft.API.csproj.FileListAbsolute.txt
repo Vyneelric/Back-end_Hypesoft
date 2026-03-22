@@ -117,3 +117,5 @@ C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\obj\Debug\net9.0\staticwebass
 C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\obj\Debug\net9.0\Hypersof.3E4EBB1C.Up2Date
 C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\obj\Debug\net9.0\Hypersoft.API.genruntimeconfig.cache
 C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\obj\Debug\net9.0\ref\Hypersoft.API.dll
+C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\AutoMapper.dll
+C:\Users\vini\Desktop\Teste-Hypesoft\Hypersoft.API\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

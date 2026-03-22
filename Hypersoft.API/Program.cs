@@ -24,6 +24,9 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Hyper
 // FluentValidation
 builder.Services.AddValidatorsFromAssemblyContaining<Hypersoft.Application.Validators.CreateProductValidator>();
 
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(Hypersoft.Application.Mappings.MappingProfile));
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
