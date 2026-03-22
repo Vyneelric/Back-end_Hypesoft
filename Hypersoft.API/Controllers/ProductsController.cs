@@ -65,9 +65,9 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] int? estoqueMenorQue)
     {
-        var products = await _mediator.Send(new GetAllProductsQuery());
+        var products = await _mediator.Send(new GetAllProductsQuery{ EstoqueMenorQue = estoqueMenorQue });
         return Ok(new{
             success = true,
             status_code = 200,

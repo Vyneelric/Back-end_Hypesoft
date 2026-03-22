@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hypersoft.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4b3375d072127213c6a6a8ad6aa90ac3c00e39c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f67b7448aa7c234281a6b8f61e764e540987bcde")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hypersoft.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hypersoft.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

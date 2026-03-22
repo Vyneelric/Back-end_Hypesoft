@@ -1,4 +1,3 @@
-using System.Numerics;
 using Hypersoft.Application.Queries;
 using Hypersoft.Domain.Repositories;
 using MediatR;
@@ -19,6 +18,9 @@ public class GetAllProductsHandler : IRequestHandler<GetAllProductsQuery, IEnume
     public async Task<IEnumerable<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
     {
         var products = await _repository.GetAllAsync();
+
+        if (request.EstoqueMenorQue.HasValue)
+            products = products.Where(p => p.quantidade_estoque < request.EstoqueMenorQue.Value);
         
         var productDtos = new List<ProductDto>();
 
