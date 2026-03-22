@@ -20,11 +20,12 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
     {
         var id = await _mediator.Send(command);
-        return Ok(new {
-        success = true,
-        status_code = 201,
-        message = "Produto criado com sucesso"
-    });
+        return StatusCode(201, new {
+            success = true,
+            status_code = 201,
+            message = "Produto criado com sucesso",
+            data = new { id }
+        });
     }
 
     [HttpGet("{id}")]
@@ -33,17 +34,17 @@ public class ProductsController : ControllerBase
         var product = await _mediator.Send(new GetProductByIdQuery(id));
         
         if (product == null)
-            return NotFound(new{
-            success = false,
-            status_code = 404,
-            message = "Produto não encontrado"
-        });
+            return NotFound(new {
+                success = false,
+                status_code = 404,
+                message = "Produto não encontrado"
+            });
 
         return Ok(new {
-        success = true,
-        status_code = 200,
-        data = product
-    });
+            success = true,
+            status_code = 200,
+            data = product
+        });
     }
 
     [HttpPut("{id}")]
@@ -51,13 +52,13 @@ public class ProductsController : ControllerBase
     {
         var result = await _mediator.Send(command);
         if (!result) 
-            return NotFound(new{
-            success = false,
-            status_code = 404,
-            message = "Produto não encontrado"
-        });
+            return NotFound(new {
+                success = false,
+                status_code = 404,
+                message = "Produto não encontrado"
+            });
         
-        return Ok(new{
+        return Ok(new {
             success = true,
             status_code = 200,
             message = "Produto atualizado com sucesso"
@@ -67,8 +68,8 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] int? estoqueMenorQue)
     {
-        var products = await _mediator.Send(new GetAllProductsQuery{ EstoqueMenorQue = estoqueMenorQue });
-        return Ok(new{
+        var products = await _mediator.Send(new GetAllProductsQuery { EstoqueMenorQue = estoqueMenorQue });
+        return Ok(new {
             success = true,
             status_code = 200,
             total_products = products.Count(),
@@ -80,18 +81,15 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> Delete(string id)
     {
         var result = await _mediator.Send(new DeleteProductCommand(id));
-        if (!result){
-            return NotFound(new{
+        if (!result)
+        {
+            return NotFound(new {
                 success = false,
                 status_code = 404,
-                message = $"Produto de ID: '{id}' não foi encontrado/não existe"
+                message = "Produto não encontrado"
             });
         }
-        return Ok(new{
-            success = true,
-            status_code = 204,
-            message = $"Produto de ID: '{id}' deletado com sucesso"
-        });
+        return StatusCode(204);
     }
 
     [HttpGet("search")]
@@ -101,17 +99,17 @@ public class ProductsController : ControllerBase
         
         if (products == null || !products.Any())
         {
-            return NotFound(new
-            {
+            return NotFound(new {
                 success = false,
                 status_code = 404,
-                message = $"Nenhum produto encontrado com o nome '{name}'"
+                message = "Nenhum produto encontrado com este nome"
             });
         }
         
-        return Ok(new{
+        return Ok(new {
             success = true,
             status_code = 200,
+            total_products = products.Count(),
             data = products
         });
     }
@@ -123,16 +121,14 @@ public class ProductsController : ControllerBase
         
         if (products == null || !products.Any())
         {
-            return NotFound(new
-            {
+            return NotFound(new {
                 success = false,
                 status_code = 404,
                 message = "Nenhum produto encontrado para esta categoria"
             });
         }
         
-        return Ok(new
-        {
+        return Ok(new {
             success = true,
             status_code = 200,
             total_products = products.Count(),

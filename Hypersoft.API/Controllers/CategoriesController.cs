@@ -20,11 +20,12 @@ public class CategoriesController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
     {
         var id = await _mediator.Send(command);
-        return Ok(new {
-        success = true,
-        status_code = 201,
-        message = "Categoria foi criada com sucesso"
-    });
+        return StatusCode(201, new {
+            success = true,
+            status_code = 201,
+            message = "Categoria criada com sucesso",
+            data = new { id }
+        });
     }
 
     [HttpGet("{id}")]
@@ -33,27 +34,28 @@ public class CategoriesController : ControllerBase
         var category = await _mediator.Send(new GetCategoryByIdQuery(id));
         
         if (category == null)
-            return NotFound(new{
-            success = false,
-            status_code = 404,
-            message = "Categoria não encontrada"
-        });
+            return NotFound(new {
+                success = false,
+                status_code = 404,
+                message = "Categoria não encontrada"
+            });
 
         return Ok(new {
-        success = true,
-        status_code = 200,
-        data = category
-    });
+            success = true,
+            status_code = 200,
+            data = category
+        });
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var category = await _mediator.Send(new GetAllCategoryQuery());
-        return Ok(new{
+        var categories = await _mediator.Send(new GetAllCategoryQuery());
+        return Ok(new {
             success = true,
             status_code = 200,
-            data = category
+            total_categories = categories.Count(),
+            data = categories
         });
     }
     
@@ -61,17 +63,14 @@ public class CategoriesController : ControllerBase
     public async Task<IActionResult> Delete(string id)
     {
         var result = await _mediator.Send(new DeleteCategoryCommand(id));
-        if (!result){
-            return NotFound(new{
+        if (!result)
+        {
+            return NotFound(new {
                 success = false,
                 status_code = 404,
-                message = $"Categoria de ID: '{id}' não foi encontrado/não existe"
+                message = "Categoria não encontrada"
             });
         }
-        return Ok(new{
-            success = true,
-            status_code = 204,
-            message = $"Categoria de ID: '{id}' deletado com sucesso"
-        });
+        return StatusCode(204);
     }
 }
