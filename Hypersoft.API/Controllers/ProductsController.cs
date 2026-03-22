@@ -36,7 +36,7 @@ public class ProductsController : ControllerBase
             return NotFound(new{
             success = false,
             status_code = 404,
-            message = "Produto não encontrada"
+            message = "Produto não encontrado"
         });
 
         return Ok(new {
@@ -45,4 +45,97 @@ public class ProductsController : ControllerBase
         data = product
     });
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(string id, [FromBody] UpdateProductCommand command)
+    {
+        var result = await _mediator.Send(command);
+        if (!result) 
+            return NotFound(new{
+            success = false,
+            status_code = 404,
+            message = "Produto não encontrado"
+        });
+        
+        return Ok(new{
+            success = true,
+            status_code = 200,
+            message = "Produto atualizado com sucesso"
+        });
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var products = await _mediator.Send(new GetAllProductsQuery());
+        return Ok(new{
+            success = true,
+            status_code = 200,
+            data = products
+        });
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var result = await _mediator.Send(new DeleteProductCommand(id));
+        if (!result){
+            return NotFound(new{
+                success = false,
+                status_code = 404,
+                message = $"Produto de ID: '{id}' não foi encontrado/não existe"
+            });
+        }
+        return Ok(new{
+            success = true,
+            status_code = 204,
+            message = $"Produto de ID: '{id}' deletado com sucesso"
+        });
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchByName([FromQuery] string name)
+    {
+        var products = await _mediator.Send(new GetProductsByNameQuery(name));
+        
+        if (products == null || !products.Any())
+        {
+            return NotFound(new
+            {
+                success = false,
+                status_code = 404,
+                message = $"Nenhum produto encontrado com o nome '{name}'"
+            });
+        }
+        
+        return Ok(new{
+            success = true,
+            status_code = 200,
+            data = products
+        });
+    }
+
+    [HttpGet("categories/{categoria_id}")]
+    public async Task<IActionResult> GetByCategory(string categoria_id)
+    {
+        var products = await _mediator.Send(new GetProductsByCategoryQuery(categoria_id));
+        
+        if (products == null || !products.Any())
+        {
+            return NotFound(new
+            {
+                success = false,
+                status_code = 404,
+                message = "Nenhum produto encontrado para esta categoria"
+            });
+        }
+        
+        return Ok(new
+        {
+            success = true,
+            status_code = 200,
+            data = products
+        });
+    }
+
 }
