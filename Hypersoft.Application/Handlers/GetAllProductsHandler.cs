@@ -1,3 +1,4 @@
+using System.Numerics;
 using Hypersoft.Application.Queries;
 using Hypersoft.Domain.Repositories;
 using MediatR;

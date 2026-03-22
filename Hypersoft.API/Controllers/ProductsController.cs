@@ -71,6 +71,7 @@ public class ProductsController : ControllerBase
         return Ok(new{
             success = true,
             status_code = 200,
+            total_products = products.Count(),
             data = products
         });
     }
