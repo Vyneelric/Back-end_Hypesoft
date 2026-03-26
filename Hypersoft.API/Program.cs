@@ -24,7 +24,11 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "Hypersoft API", Version = "v1", Description = "API de gerenciamento de produtos e categorias do ShopSense." });
+    c.EnableAnnotations();
+});
 
 // MongoDB
 var mongoConnection = builder.Configuration.GetConnectionString("MongoDB") ?? "mongodb://localhost:27017";

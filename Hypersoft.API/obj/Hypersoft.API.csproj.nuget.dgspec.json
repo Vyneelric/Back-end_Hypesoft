@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj": {}
+    "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj": {
+    "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj",
+        "projectUniqueName": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj",
         "projectName": "Hypersoft.API",
-        "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj",
+        "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.API\\Hypersoft.API.csproj",
         "packagesPath": "C:\\Users\\vini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.API\\obj\\",
+        "outputPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vini\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj": {
-                "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj"
+              "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj": {
+                "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj"
               },
-              "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj"
+              "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj"
               }
             }
           }
@@ -51,6 +51,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AspNetCoreRateLimit": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
@@ -68,6 +72,10 @@
               "version": "[9.0.14, )"
             },
             "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",
               "version": "[7.2.0, )"
             }
@@ -95,14 +103,14 @@
         }
       }
     },
-    "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj": {
+    "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj",
+        "projectUniqueName": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj",
         "projectName": "Hypersoft.Application",
-        "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj",
+        "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Application\\Hypersoft.Application.csproj",
         "packagesPath": "C:\\Users\\vini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Application\\obj\\",
+        "outputPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vini\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -117,8 +125,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj": {
-                "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj"
+              "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj": {
+                "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj"
               }
             }
           }
@@ -172,14 +180,14 @@
         }
       }
     },
-    "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj": {
+    "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj",
+        "projectUniqueName": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj",
         "projectName": "Hypersoft.Domain",
-        "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj",
+        "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj",
         "packagesPath": "C:\\Users\\vini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\obj\\",
+        "outputPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vini\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -231,14 +239,14 @@
         }
       }
     },
-    "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj": {
+    "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj",
+        "projectUniqueName": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj",
         "projectName": "Hypersoft.Infrastructure",
-        "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj",
+        "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Infrastructure\\Hypersoft.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\vini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Infrastructure\\obj\\",
+        "outputPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vini\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -253,8 +261,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj": {
-                "projectPath": "C:\\Users\\vini\\Desktop\\Teste-Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj"
+              "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj": {
+                "projectPath": "c:\\Users\\vini\\Desktop\\Hypesoft_Test\\Back-end_Hypesoft\\Hypersoft.Domain\\Hypersoft.Domain.csproj"
               }
             }
           }

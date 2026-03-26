@@ -2,11 +2,13 @@ using Hypersoft.Application.Commands;
 using Hypersoft.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Hypersoft.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Tags("Categories")]
 public class CategoriesController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -17,6 +19,9 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
+    [SwaggerOperation(Summary = "Create a category")]
+    [SwaggerResponse(201, "Category created successfully")]
+    [SwaggerResponse(400, "Validation error")]
     public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
     {
         var id = await _mediator.Send(command);
@@ -29,6 +34,9 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [SwaggerOperation(Summary = "Get category by ID")]
+    [SwaggerResponse(200, "Category found")]
+    [SwaggerResponse(404, "Category not found")]
     public async Task<IActionResult> GetById(string id)
     {
         var category = await _mediator.Send(new GetCategoryByIdQuery(id));
@@ -48,6 +56,8 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet]
+    [SwaggerOperation(Summary = "Get all categories")]
+    [SwaggerResponse(200, "List of categories")]
     public async Task<IActionResult> GetAll()
     {
         var categories = await _mediator.Send(new GetAllCategoryQuery());
@@ -60,6 +70,9 @@ public class CategoriesController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [SwaggerOperation(Summary = "Delete a category")]
+    [SwaggerResponse(204, "Category deleted successfully")]
+    [SwaggerResponse(404, "Category not found")]
     public async Task<IActionResult> Delete(string id)
     {
         var result = await _mediator.Send(new DeleteCategoryCommand(id));
