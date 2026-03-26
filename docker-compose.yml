@@ -35,6 +35,8 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     command: start-dev
+    volumes:
+      - keycloak_data:/opt/keycloak/data
     networks:
       - hypersoft-network
 
@@ -86,6 +88,7 @@ services:
 
 volumes:
   mongodb_data:
+  keycloak_data:
 
 networks:
   hypersoft-network:
