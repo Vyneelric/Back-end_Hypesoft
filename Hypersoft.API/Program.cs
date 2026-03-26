@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using FluentValidation;
 using Hypersoft.API.Middlewares;
 using Hypersoft.Domain.Repositories;
@@ -5,6 +6,15 @@ using Hypersoft.Infrastructure.Data;
 using Hypersoft.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Rate Limiting
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+builder.Services.AddInMemoryRateLimiting();
 
 builder.Services.AddCors(options =>
 {
@@ -36,6 +46,8 @@ builder.Services.AddAutoMapper(typeof(Hypersoft.Application.Mappings.MappingProf
 
 var app = builder.Build();
 
+app.UseIpRateLimiting();
+app.UseMiddleware<SecurityHeadersMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
 
